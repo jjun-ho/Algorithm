@@ -1,7 +1,7 @@
 import random
 from timeit import default_timer as timer  # 시간 측정을 위해 import
 
-def selection_sort(x): #선택 정렬 함수
+def selection_sort(x): #3. 선택 2. 정렬 함수
     for last in range(len(x)-1, 0, -1):  # last, last ~ 1 까지 하나씩 감소
         largest = 0 # 가장 큰수의 index
         for i in range(1, last+1):  # i, 1~last 까지 하나씩 증가
@@ -23,7 +23,7 @@ print(data)
 print(test(data))
 
 """
-* 선택 정렬(Selection Sort)
+* 3. 선택 2. 정렬(Selection Sort)
 1. index 0번부터 마지막(last)까지 하나씩 비교 하면서 가장 큰수의 index를 largest 변수에 저장한다.
 2. 가장 큰수와 가장 마지막 index(last)에 있는 수를 맞바꾼다.
 3. last 값을 하나 줄인다.
