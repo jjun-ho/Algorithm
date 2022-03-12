@@ -3,7 +3,7 @@ from timeit import default_timer as timer  # 시간 측정을 위해 import
 
 def selection_sort(x): #3. 선택 2. 정렬 함수
     for last in range(len(x)-1, 0, -1):  # last, last ~ 1 까지 하나씩 감소
-        largest = 0 # 가장 큰수의 index
+        largest = 0  # 가장 큰수의 index
         for i in range(1, last+1):  # i, 1~last 까지 하나씩 증가
             if x[i] > x[largest]:
                 largest = i
