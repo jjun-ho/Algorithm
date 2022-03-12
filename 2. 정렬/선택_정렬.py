@@ -1,15 +1,15 @@
 import random
 from timeit import default_timer as timer  # 시간 측정을 위해 import
 
-def selection_sort(x): #3. 선택 2. 정렬 함수
-    for last in range(len(x)-1, 0, -1):  # last, last(n-1) ~ 1 까지 하나씩 감소
+def selection_sort(x): #선택 정렬 함수
+    for last in range(len(x)-1, 0, -1):  # last, last(n-1)~1 까지 하나씩 감소: ~0 말고 ~1 까지만 반복함으로서 마지막 비교 계산 안해도됨.
         largest = 0  # 가장 큰수의 index
-        for i in range(1, last+1):  # i, 1 ~ last 까지 하나씩 증가
+        for i in range(1, last+1):  # i, 1~last 까지 하나씩 증가
             if x[i] > x[largest]:  # 비교
                 largest = i
             x[largest], x[last] = x[last], x[largest]  # 맞바꾸기
 
-def test(x):  #정렬이 되어있는지 확인하는 함수
+def test(x):  # 정렬이 되어있는지 확인하는 함수
     for i in range(1,len(x)):
         if x[i-1] > x[i]:
             return False
