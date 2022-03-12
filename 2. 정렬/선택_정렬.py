@@ -23,7 +23,7 @@ print(data)
 print(test(data))
 
 """
-* 3. 선택 2. 정렬(Selection Sort)
+* 3. 선택 정렬(Selection Sort)
 1. index 0번부터 마지막(last)까지 하나씩 비교 하면서 가장 큰수의 index를 largest 변수에 저장한다.
 2. 가장 큰수와 가장 마지막 index(last)에 있는 수를 맞바꾼다.
 3. last 값을 하나 줄인다.
