@@ -1,8 +1,8 @@
+"""
+# < 병합 정렬 코드 1 >
 import random
 from timeit import default_timer as timer
 
-"""
-# < 병합 정렬 코드 1 >
 def merge_sort(A, p, r):  # 처음 p = 0, r = n-1
     if p < r:
         q = (p+r) // 2
@@ -34,8 +34,23 @@ def merge(A, p, q, r):
         A[i] = tmp[t]
         i += 1
         t += 1
+        
+def test(A):
+    for i in range(1, len(A)):
+        if A[i-1] > A[i]:
+            return False
+    return True
+x = random.sample(range(10000), 100)
+start = timer()
+merge_sort(x,0,len(x)-1)  # **
+print(timer() - start)
+print(x)
+print(test(x))        
 """
 # < 병합 정렬 코드 2 >
+import random
+from timeit import default_timer as timer
+
 def merge_sort(x):
     if len(x) > 1:  # 나누어 질수 있다면(낱개로)
         mid = len(x) // 2   # mid = q
@@ -62,7 +77,7 @@ def test(A):
 
 x = random.sample(range(10000), 100)
 start = timer()
-merge_sort(x)
+merge_sort(x)  # **
 print(timer() - start)
 print(x)
 print(test(x))
@@ -71,6 +86,7 @@ print(test(x))
 * 병합 정렬(Merge Sort)
 - 합병을 이용한 정렬 알고리즘
 - 두 개의 정렬된 배열이 주어졌을 때, 정령된 하나의 배열로 합병
+cf)
 - A divide-conquer approach
 -> 크기가 커서 풀기 어려운 하나의 문제를 크기가 작아서 풀기 쉬운 여러 개의 문제로 바꾸어서 푸는 방법
 1. Divide: n keys를 두 개의 n/2 keys로 나눈다 (n -> n/2 -> ... -> 1) : Θ(1)
@@ -79,6 +95,7 @@ print(test(x))
 T(n) = Θ(1)            (if n=1)  = c
      = 2𝑇(𝑛/2) + Θ(n)  (if n>1)  = 2𝑇(𝑛/2) + cn
 
+cf)
 * 합병 정렬의 수행시간
 - 두 개의 정렬된 배열의 길이를 n1, n2 라고 하면 수행시간 Θ(n1 + n2 )
 - 주요 함수: compare 와 move
