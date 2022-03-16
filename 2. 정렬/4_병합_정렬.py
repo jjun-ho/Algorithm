@@ -66,7 +66,7 @@ def merge_sort(x):
                 x[i] = rx[ri]
                 ri += 1
             i += 1
-        x[i:] = lx[li:] if li != len(lx) else rx[ri:]
+        x[i:] = lx[li:] if li != len(lx) else rx[ri:]  # 비교 안된 남은 리스트 집어넣기
       # i ~ 끝 / li ~ 끝 /if 끝까지 안갔다(왼쪽 리스트가 남았다) / else 오른쪽 리스트가 남았다 (x[i:]=rx[ri:])
 
 def test(A):
