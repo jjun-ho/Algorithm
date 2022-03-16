@@ -11,7 +11,7 @@ def bubble_sort(A):  # 버블 정렬 함수
         if sorted:  #last = n-1일 때, i: 0~(last-1) -> 맞바꾸는 한번도 없다 = 이미 정렬 되어 있음 -> 더 이상 반복x
             break
 
-def test(A):   # 정렬이 되어있는지 확인하는 함수
+def test(A):  # 정렬이 되어있는지 확인하는 함수
     for i in range(1, len(A)):
         if A[i-1] > A[i]:
             return False
