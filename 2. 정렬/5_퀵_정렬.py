@@ -1,6 +1,8 @@
+"""
 # < 퀵 정렬 코드 1 (중간에 있는 것을 피벗으로 사용) >
 import random
 from timeit import default_timer as timer
+
 def quick_sort(A):
     if len(A) <= 1:
         return A
@@ -29,6 +31,95 @@ x = quick_sort(x)
 print(timer() - start)
 print(x)
 print(test(x))
+"""
+
+"""
+# < 퀵 정렬 코드 2 (제일 왼쪽에 있는 것을 피벗으로 사용) >
+import random
+from timeit import default_timer as timer
+
+def partition(A, p, r):
+    x = A[p]
+    left = p + 1  # i index
+    right = r  # j index
+    while True:
+        while left <= right and A[left] <= x:
+            left += 1
+        while left <= right and x <= A[right]:
+            right -= 1
+        if right < left:  # i, j 교차 되었을 때
+            break
+        else: # i, j 교차 되지 않았을 때
+            A[left], A[right] = A[right], A[left]
+    A[p], A[right] = A[right], A[p]
+    return right
+
+def qsort(A, p, r):
+    if p < r:  # p = r -> 낱개로 다 나누어졌을 때
+        q = partition(A, p, r)
+        qsort(A, p, q - 1)
+        qsort(A, q + 1, r)
+
+
+def quick_sort(A):
+    qsort(A, 0, len(A)-1)
+
+def test(A):
+    for i in range(1, len(A)):
+        if A[i-1] > A[i]:
+            return False
+    return True
+
+x = random.sample(range(10000), 100)
+start = timer()
+quick_sort(x)
+print(timer() - start)
+print(x)
+print(test(x))
+"""
+
+# < 퀵 정렬 코드 2 (제일 오른쪽에 있는 것을 피벗으로 사용) >
+import random
+from timeit import default_timer as timer
+
+def partition(A, p, r):
+    x = A[r]
+    left = p + 1  # i index
+    right = r  # j index
+    while True:
+        while left <= right and A[left] <= x:
+            left += 1
+        while left <= right and x <= A[right]:
+            right -= 1
+        if right < left:  # i, j 교차 되었을 때
+            break
+        else: # i, j 교차 되지 않았을 때
+            A[left], A[right] = A[right], A[left]
+    A[p], A[right] = A[right], A[p]
+    return right
+
+def qsort(A, p, r):
+    if p < r:  # p = r -> 낱개로 다 나누어졌을 때
+        q = partition(A, p, r)
+        qsort(A, p, q - 1)
+        qsort(A, q + 1, r)
+
+
+def quick_sort(A):
+    qsort(A, 0, len(A)-1)
+
+def test(A):
+    for i in range(1, len(A)):
+        if A[i-1] > A[i]:
+            return False
+    return True
+
+x = random.sample(range(10000), 100)
+start = timer()
+quick_sort(x)
+print(timer() - start)
+print(x)
+print(test(x))
 
 """
 * 퀵 정렬(Quick Sort)
@@ -53,6 +144,8 @@ print(test(x))
 2. A[j] < A[p]일 때까지 이동(<-), j는 i-1까지만 이동 가능
 3-1. i와 j가 서로 지나치지 않았으면 A[i], A[j] 맞교환
 3-2. i와 j가 서로 지나쳤으면 A[j], A[p] 맞교환 후, 피벗의 위치를 j로 변경
+
+* 마지막 것을 피벗으로 사용
 
 cf)
 * 퀵 정렬의 성능 분석

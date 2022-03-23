@@ -12,10 +12,8 @@
 
 삽입 정렬 Θ(n)    Θ(n^2)   Θ(n^2)
 
-cf)
-
 합병 정렬 Θ(nlog𝑛) Θ(nlog𝑛) Θ(nlog𝑛)
 
-퀵 정렬  Θ(nlog𝑛) Θ(nlog𝑛) Θ(n^2)
+퀵 정렬  Θ(nlog𝑛) Θ(n^2)   Θ(nlog𝑛) 
 
-힙 정렬  Θ(n)     /---/     Θ(nlog𝑛)
+힙 정렬  Θ(nlog𝑛) Θ(nlog𝑛) Θ(nlog𝑛)
