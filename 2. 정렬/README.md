@@ -12,8 +12,10 @@
 
 삽입 정렬 Θ(n)    Θ(n^2)   Θ(n^2)
 
-합병 정렬 Θ(nlog𝑛) Θ(nlog𝑛) Θ(nlog𝑛)
+합병 정렬 Θ(nlog𝑛) Θ(nlog𝑛) Θ(nlog𝑛) 
 
 퀵 정렬  Θ(nlog𝑛) Θ(n^2)   Θ(nlog𝑛) 
 
 힙 정렬  Θ(nlog𝑛) Θ(nlog𝑛) Θ(nlog𝑛)
+
+cd) 퀵 정렬보다 합병 정렬이 Worst 경우 더 빠르지만, memory 좀더 사용
