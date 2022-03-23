@@ -84,19 +84,13 @@ from timeit import default_timer as timer
 
 def partition(A, p, r):
     x = A[r]
-    left = p + 1  # i index
-    right = r  # j index
-    while True:
-        while left <= right and A[left] <= x:
-            left += 1
-        while left <= right and x <= A[right]:
-            right -= 1
-        if right < left:  # i, j 교차 되었을 때
-            break
-        else: # i, j 교차 되지 않았을 때
-            A[left], A[right] = A[right], A[left]
-    A[p], A[right] = A[right], A[p]
-    return right
+    i = p   # i index
+    for j in range(p, r):  # j: p~r-1
+        if A[j] <= x:
+            A[i], A[j] = A[j], A[i]
+            i += 1
+    A[i], A[r] = A[r], A[i]
+    return i
 
 def qsort(A, p, r):
     if p < r:  # p = r -> 낱개로 다 나누어졌을 때
