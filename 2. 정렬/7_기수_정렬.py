@@ -2,7 +2,7 @@ import random
 from timeit import default_timer as timer
 
 def rsort(A, m):
-    buckets = [[] for _ in range(10)]  # 빈 리스트 10개로 구성된 리스트
+    buckets = [[] for _ in range(10)]  # 빈 리스트 10개로 구성된 리스트, 자릿수로 올수있는 값 0~9
     for v in A:
         index = v // (10 ** m)
         index %= 10
@@ -13,7 +13,7 @@ def rsort(A, m):
     return res
 
 def radix_sort(A, k):  # k: 최대 자리수
-    for i in range(0, k):
+    for i in range(0, k):  # i:0 ~ k-1, i번째 자릿수 기준 정렬
         A = rsort(A, i)
     return A
 
