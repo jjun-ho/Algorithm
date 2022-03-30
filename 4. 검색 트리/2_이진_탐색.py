@@ -22,5 +22,12 @@ print(timer() - start)
 print('value', value, 'found', index)
 print(True if index >= 0 and x[index] == value else False)
 """
+* 이진 탐색
+- 임의의 데이터들 -> 순서대로 정렬한 후 이진 탐색
+- 데이터를 입력할 때부터 정렬 -> 이진 탐색(검색) 트리
 
+1. 중간 = (시작 + 끝)/2 의 몫
+2-1. 찾을 값 > 중간: 시작 = 중간 + 1
+2-2. 찾을 값 < 중간: 끝 = 중간 -1
+2-3. 찾을 값 = 중간: 탐색 종료
 """
