@@ -27,6 +27,7 @@ x = counting_sort(x, 49)
 print(timer() - start)
 print(x)
 print(test(x))
+
 """
 * 계수 정렬(Counting Sort)
 - 계수를 이용하여 정렬: 입력 받은 배열에 있는 숫자의 범위를 확인하고 몇 개가 있는지를 세어보고 정렬하는 알고리즘

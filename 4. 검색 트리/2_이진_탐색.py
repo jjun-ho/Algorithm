@@ -21,6 +21,7 @@ print(timer() - start)
 
 print('value', value, 'found', index)
 print(True if index >= 0 and x[index] == value else False)
+
 """
 * 이진 탐색
 - 임의의 데이터들 -> 순서대로 정렬한 후 이진 탐색

@@ -34,6 +34,7 @@ start = timer()
 print(SELECT(x,0,99,50))  # 0~99 중, 50번 째 원소 찾기
 print(timer() - start)
 print(x)
+
 """
 * 선택 알고리즘
 - n개 중 i번째 작은 원소 찾기
