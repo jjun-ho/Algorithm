@@ -7,7 +7,7 @@ class Node(object):
         self.left = None
         self.right = None
 
-def insert(node, key):
+def insert(node, key):  # BST: 이진 검색 트리
     if node is None: node = Node(key)  # 노드 없으면
     elif key < node.key: node.left = insert(node.left, key)  # 현재 노드 왼쪽에 추가
     else: node.right = insert(node.right, key) # 현재 노드 오른쪽에 추가
