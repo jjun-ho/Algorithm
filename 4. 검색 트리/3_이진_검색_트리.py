@@ -1,6 +1,6 @@
 import random
 from timeit import default_timer as timer
-
+"""
 class Node(object):
     def __init__(self, key):  # 생성자
         self.key = key
@@ -17,9 +17,7 @@ def search(node, key):
     if node is None or node.key == key: return node
     if key < node.key: return search(node.left, key)
     return search(node.right, key)
-
 """
-# 노드 삭제
 class Node(object):
     def __init__(self, key, parent):  # 생성자
         self.key = key
@@ -27,6 +25,18 @@ class Node(object):
         self.right = None
         self.parent = parent
 
+def insert(node, key,parent):
+    if node is None: node = Node(key, parent)
+    elif key < node.key: node.left = insert(node.left, key, node)
+    else: node.right = insert(node.right, key, node)
+    return node
+
+def search(node, key):
+    if node is None or node.key == key: return node
+    if key < node.key: return search(node.left, key)
+    return search(node.right, key)
+
+# 노드 삭제
 def DELETE_NODE(r):  # r: 삭제할 노드
     if r.left is None and r.right is None:  # r의 자식 0개 -> 그냥 삭제
         return None
@@ -47,20 +57,20 @@ def DELETE_NODE(r):  # r: 삭제할 노드
         return r
 
 def DELETE(node):
+    global root
     if node == root:
         root = DELETE_NODE(node)
     elif node == node.parent.left:  # 부모 노드의 왼쪽 노드 라면
         node.parent.left = DELETE_NODE(node)
     else:  # 부모 노드의 오른쪽 노드 라면
         node.parent.right = DELETE_NODE(node)
-"""
 
 x = random.sample(range(5000), 1000)  # 무작위로 1000개를 뽑아 데이터를 만든다
 value = x[800]  # 찾을 값(비교를 위해 인덱스를 고정)
 
 root = None  # 초기 root = None
 for i in x:  # 1000개 데이터 추가
-    root = insert(root, i)
+    root = insert(root, i, None)
 
 start = timer()
 found = search(root, value)

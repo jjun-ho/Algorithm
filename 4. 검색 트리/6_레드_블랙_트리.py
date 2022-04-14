@@ -1,4 +1,6 @@
 class Node(object):
+    RED = True
+    BLACK = False
     def __init__(self, key, parent, color):  # 생성자
         self.key = key
         self.left = None
@@ -31,7 +33,7 @@ def left_rotate(X): # 왼쪽 회전
         root = Y
     elif X == X.parent.left:
         X.parent.left = Y
-    else
+    else:
         X.parent.right = Y
     Y.left = X
     X.parent = Y
@@ -102,4 +104,188 @@ def search(root, data):
 - 최악의 경우에도 최소 높이의 2배 이하
 - 최소 높이가 logn
 ->O(logn)
+"""
+
+"""
+cf) 레드 블랙 트리 전체
+
+class Node:
+    RED = True
+    BLACK = False
+    def __init__(self, value, color=RED):
+        self.color = color
+        self.value = value
+        self.left = None
+        self.right = None
+        self.parent = None
+
+    def __str__(self):
+        return str(self.value) + ':' + str('R' if self.color else 'B')
+
+    def verbose(self):
+        return '{} (parent:{} left:{} right:{})'.format(self, self.parent, self.left, self.right)
+
+class RedBlackTree:
+    def __init__(self):
+        self.root = None
+    def max_depth(self, root=None):
+        if root is None:
+            return 0
+        else:
+            return max(self.max_depth(root.left), self.max_depth(root.right)) + 1
+
+    def depth(self, node):
+        if node is None:
+            return 0
+        node_ = node
+        depth = 0
+        while node_ != self.root:
+            node_ = node_.parent
+            depth += 1
+        return depth
+
+    def min(self, current=None):
+        if not current:
+            current = self.root
+        while current.left is not None:
+            current = current.left
+        return current
+
+    def max(self, current=None):
+        if not current:
+            current = self.root
+        while current.right is not None:
+            current = current.right
+        return current
+
+    def search(self, value):
+        return self.__search(self.root, value)
+
+    def __search(self, node, value):
+        while node is not None and value != node.value:
+            if value < node.value:
+                node = node.left
+            else:
+                node = node.right
+        return node
+
+    def successor(self, value):
+        current = self.search(value)
+        if current is None:
+            raise Exception(('a Node with value ({})'' does not exist').format(value))
+        return self.__successor(current)
+
+    def __successor(self, current):
+        if current.right is not None:
+            return self.min(current.right)
+        while (current.parent is not None and current.parent.right is current):
+            current = current.parent
+        return current.parent
+
+    def insert(self, key):
+        node = Node(key)
+        x = self.root
+        y = None
+        while x is not None:
+            y = x
+            if key < x.value:
+                x = x.left
+            else:
+                x = x.right
+        node.parent = y
+        if y is None:
+            self.root = node
+        elif key < y.value:
+            y.left = node
+        else:
+            y.right = node
+        node.left = None
+        node.right = None
+        node.color = Node.RED
+        self.__insert_fixup(node)
+
+    def __insert_fixup(self, x):
+        while x != self.root and x.parent.color == Node.RED:
+            if x.parent == x.parent.parent.left:
+                y = x.parent.parent.right
+                if y is not None and y.color == Node.RED:
+                    x.parent.color = Node.BLACK
+                    y.color = Node.BLACK
+                    x.parent.parent.color = Node.RED
+                    x = x.parent.parent
+                else:
+                    if x == x.parent.right:
+                        x = x.parent
+                        self.__left_rotate(x)
+                    x.parent.color = Node.BLACK
+                    x.parent.parent.color = Node.RED
+                    self.__right_rotate(x.parent.parent)
+            else:
+                y = x.parent.parent.left
+                if y is not None and y.color == Node.RED:
+                    x.parent.color = Node.BLACK
+                    y.color = Node.BLACK
+                    x.parent.parent.color = Node.RED
+                    x = x.parent.parent
+                else:
+                    if x == x.parent.left:
+                        x = x.parent
+                        self.__right_rotate(x)
+                    x.parent.color = Node.BLACK
+                    x.parent.parent.color = Node.RED
+                    self.__left_rotate(x.parent.parent)
+        self.root.color = Node.BLACK
+
+    def __left_rotate(self, x):
+        if not x.right:
+            raise Exception("a right branch of Node is None")
+        y = x.right
+        x.right = y.left
+        if y.left:
+            y.left.parent = x
+        y.parent = x.parent
+        if not x.parent:
+            self.root = y
+        else:
+            if x == x.parent.left:
+                x.parent.left = y
+            else:
+                x.parent.right = y
+        y.left = x
+        x.parent = y
+
+    def __right_rotate(self, x):
+        if not x.left:
+            raise Exception("a right branch of Node is None")
+        y = x.left
+        x.left = y.right
+        if y.right:
+            y.right.parent = x
+        y.parent = x.parent
+        if not x.parent:
+            self.root = y
+        else:
+            if x == x.parent.left:
+                x.parent.left = y
+            else:
+                x.parent.right = y
+        y.right = x
+        x.parent = y
+
+    def transplant(self, node, newnode):
+        if node.parent is None:
+            self.root = newnode
+        elif node == node.parent.left:
+            node.parent.left = newnode
+        else:
+            node.parent.right = newnode
+        if newnode is not None:
+            newnode.parent = node.parent
+
+if __name__ in "__main__":
+    tree = RedBlackTree()
+    for i in [100,3,4,22,54,35,14,56,20]:
+        print('insert {} to tree'.format(i))
+        tree.insert(i)
+    print(tree.search(20))
 """
