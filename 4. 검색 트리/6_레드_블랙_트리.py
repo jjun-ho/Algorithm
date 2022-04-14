@@ -1,9 +1,10 @@
 class Node(object):
-    def __init__(self, key, parent):  # 생성자
+    def __init__(self, key, parent, color):  # 생성자
         self.key = key
         self.left = None
         self.right = None
         self.parent = parent
+        self.color = color
 
 def right_rotate(X):  # 오른쪽 회전
     Y = X.left
@@ -41,8 +42,9 @@ def BST_insert(node, key):  # 이진 검색 트리 insert
     else: node.right = BST_insert(node.right, key) # 현재 노드 오른쪽에 추가
     return node
 
-def Rb_insert(N):  # 삽입: 새로운 키를 트리에 추가
-    BST_insert(node,N)  # 이진 검색 트리 똑같이 노드 삽입
+# 삽입: 새로운 키를 트리에 추가
+def RB_insert(N):
+    BST_insert(N)  # 이진 검색 트리 똑같이 노드 삽입
     while N.parent.color == RED: # 균형 맞춰줌
         if N.parent == N.parent.parent.right: # P가 오른쪽 자식
             U = N.parent.parent.left
@@ -72,7 +74,8 @@ def Rb_insert(N):  # 삽입: 새로운 키를 트리에 추가
             right_rotate(N.parent.parent)
     root.color = BLACK
 
-def search(root, data): # 검색: 찾는 키를 가지고 있는 노드를 반환
+# 검색: 찾는 키를 가지고 있는 노드를 반환
+def search(root, data):
     if root is None or root.data == data:
         return root
     elif root.data >= data:
