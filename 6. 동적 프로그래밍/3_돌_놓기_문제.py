@@ -13,6 +13,6 @@
 - W(i,p): i열이 패턴 p로 놓일 때 i열에 돌이 놓인 곳의 점수 합
 - p의 이웃 q
 -> C(i,p) = W(1,p) (if. i=1)
-          = max{C(i-1,q)} + W(i,p) (if. i>1)
--> 답: max{C(n,i) | i = 1 or 2 or 3 or 4} <- 패턴 4개
+          = max{ C(i-1,q) + W(i,p) } (if. i>1)
+-> 답: max{ C(n,i) | i = 1 or 2 or 3 or 4 } <- 패턴 4개
 """

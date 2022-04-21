@@ -35,5 +35,5 @@ def Matrix_Path_2(n):
 - (i,j)에 도착하기 직전: (i-1,j) or (i,j-1)
 - (i,j)에 도착하는 최고 점수 C = max{(i-1,j)까지의 최고점수, (i,j-1)까지의 최고점수} + (i,j)의 점수
 - C = 0 (if. i=0 or j=o)
-    = M(ij) + max{C(i-1,j). C(i,j-1)} (if. otherwise
+    = M(ij) + max{ C(i-1,j). C(i,j-1) } (if. otherwise
 """
