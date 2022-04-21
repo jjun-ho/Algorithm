@@ -34,6 +34,6 @@ def Matrix_Path_2(n):
 - 가장 왼쪽 위에서 가장 오른쪽 아래로 이동하면서 만나는 칸의 합이 가장 큰 경로 찾기
 - (i,j)에 도착하기 직전: (i-1,j) or (i,j-1)
 - (i,j)에 도착하는 최고 점수 C = max{(i-1,j)까지의 최고점수, (i,j-1)까지의 최고점수} + (i,j)의 점수
-- C = 0 (i=0 or j=o)
-    = M(ij) + max{C(i-1,j). C(i,j-1)}
+- C = 0 (if. i=0 or j=o)
+    = M(ij) + max{C(i-1,j). C(i,j-1)} (if. otherwise
 """
