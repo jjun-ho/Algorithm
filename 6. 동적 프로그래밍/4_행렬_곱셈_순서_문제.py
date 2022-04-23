@@ -16,8 +16,7 @@
 –> (A1* ⋯ *An-1) * An
 - C(i,j):  Ai ... Aj를 계산하는 최소 비용
 -> Ai * (Ai+1 ... Aj) , (Ai*Ai+1) * (Ai+2 ... Aj), ... , (Ai ... Aj-1) * Aj 중 하나
--> (Ai*Ak) * (Ak+2 ... Aj)의 최소비용: C(i,j) + C(k+1,j) + (Pi-1 * Pk * Pj)
+-> (Ai*Ak) * (Ak+1 ... Aj)의 최소비용: C(i,j) + C(k+1,j) + (Pi-1 * Pk * Pj)
 - C(i,j) = 0 (if. i=j)
          = min{ C(i,j) + C(k+1,j) + (Pi-1 * Pk * Pj) } (if. i<j, i <= k <= j-1)
-
 """
