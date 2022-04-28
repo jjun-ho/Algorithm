@@ -37,3 +37,51 @@ print(g.R)
 -> 간 (i, j)가 존재하면 정렬 결과에서 정점 i는 j보다 앞에 위치
 - 수행 시간: Θ(𝑉 + 𝐸)
 """
+
+"""
+# 다른 참고 code
+from collections import defaultdict
+class Graph:
+    #유향 그래프로 생성
+    def __init__(self, directed=True):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, alt, dest):
+        self.graph[alt].append(dest)
+        if self.directed is False:
+            self.graph[dest].append(alt)
+        else:
+            self.graph[dest] = self.graph[dest]
+
+    def topovisit(self, s, visited, sortlist):
+        visited[s] = True
+        for i in self.graph[s]:
+            if not visited[i]:
+                self.topovisit(i, visited, sortlist)
+        sortlist.insert(0, s)
+
+    def topoSort(self):
+        visited = {i: False for i in self.graph}
+        sortlist = []
+
+        for v in self.graph:
+            if not visited[v]:
+                self.topovisit(v, visited, sortlist)
+        print(sortlist)
+
+#main문
+if __name__ == '__main__':
+    graph1 = Graph()
+    graph1.addEdge(1, 2)
+    graph1.addEdge(1, 3)
+    graph1.addEdge(1, 4)
+    graph1.addEdge(2, 5)
+    graph1.addEdge(2, 6)
+    graph1.addEdge(3, 7)
+    graph1.addEdge(3, 8)
+    graph1.addEdge(4, 9)
+
+#Sort된 graph1 확인
+    graph1.topoSort()
+"""

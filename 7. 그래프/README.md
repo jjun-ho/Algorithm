@@ -40,8 +40,8 @@
 
 ---
 < 탐색 >
-- 너비 우선 탐색 (Breadth-First Search: BFS) 
-- 깊이 우선 탐색 (Depth-First Search: DFS)
+- 너비 우선 탐색 (Breadth-First Search: BFS): 거리 우선
+- 깊이 우선 탐색 (Depth-First Search: DFS): 순서 우선
 
 --- 
 < 최소 신장 트리(Minimum Spanning Tree) >
@@ -58,7 +58,7 @@
 ---
 < 프림 알고리즘(Prim Algorithm) >
 - 공집합에서 시작하여 V가 될 때까지 키워 나간다
-- 정점을 하나 추가할 때마다 간선을 하나   확장
+- 정점을 하나 추가할 때마다 간선을 하나 확장
 - 수행 시간: O(E*logV)  
 
 ---
