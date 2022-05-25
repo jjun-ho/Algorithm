@@ -1,29 +1,28 @@
 from random import randint
 
-def insertionSort_ASC(arr, first, last, h):
+def InsertionSort(list, first, last, h):
     i = first + h
     while i <= last:
-        val = arr[i]
+        val = list[i]
         pos = i
-        while pos > first and arr[pos - h] > val:
-            arr[pos] = arr[pos - h]
+        while pos > first and list[pos - h] > val:
+            list[pos] = list[pos - h]
             pos -= h
-        arr[pos] = val
+        list[pos] = val
         i += h
 
-
-def shellSort_ASC(arr,h):
-    n = len(arr)
+def ShellSort(list,h):
+    n = len(list)
     while h > 0:
         for i in range(0, h):
-            insertionSort_ASC(arr, i, n - 1, h)
+            InsertionSort(list, i, n - 1, h)
         h //= 2
-    return arr
+    return list
 
-array = [randint(1, 1000) for i in range(100)]
+rlist = [randint(1, 1000) for i in range(100)]
 
-print('Shell Sort(57) :', shellSort_ASC(array,57));
-print('Shell Sort(23) :', shellSort_ASC(array,23));
-print('Shell Sort(10) :', shellSort_ASC(array,10));
-print('Shell Sort(04) :', shellSort_ASC(array,4));
-print('Shell Sort(01) :', shellSort_ASC(array,1));
+print('Shell_Sort(57) :', ShellSort(rlist,57))
+print('Shell_Sort(23) :', ShellSort(rlist,23))
+print('Shell_Sort(10) :', ShellSort(rlist,10))
+print('Shell_Sort(04) :', ShellSort(rlist,4))
+print('Shell_Sort(01) :', ShellSort(rlist,1))
