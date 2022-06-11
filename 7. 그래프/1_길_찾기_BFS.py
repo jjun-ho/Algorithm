@@ -38,7 +38,7 @@ while queue.length() > 0:  # 비어있지 않으면
     for next in [(h, v) for h, v in candidates if grid[v][h] != 0]:
         if next not in came_from:  # 방문 안했으면
             queue.push(next)  # enqueue
-            came_from[next] = current  # (next):(current), current->next로 옴
+            came_from[next] = current  # (next):(current), current-> next로 옴
 # 경로 역추적
 current = goal
 path = []

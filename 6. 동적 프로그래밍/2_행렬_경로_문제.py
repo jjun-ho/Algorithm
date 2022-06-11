@@ -25,7 +25,7 @@ def Matrix_Path_2(n):
         c[0][j] = 0
     for i in range(1,n+1):
         for j in range(1, n+1):
-            c[i][j] = m[i][j] + max(c[i-1][j], c[1][j-1])
+            c[i][j] = m[i][j] + max(c[i-1][j], c[i][j-1])
     return c[n][n]
 
 """
